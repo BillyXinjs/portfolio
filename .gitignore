@@ -1,6 +1,5 @@
 node_modules/
 .DS_Store
-pdfs/
 playbook_simple_v1.bak.html
 translate_playbook.py
 long_en/
