@@ -1,0 +1,18 @@
+{
+  "scroll-padding-top 与 .toc 的 sticky top 一致，锚点跳转后场景顶部与目录顶部持平": "scroll-padding-top matches the sticky top of .toc, so after an anchor jump the scenario top aligns with the TOC top",
+  "顶栏": "Top bar",
+  "主容器": "Main container",
+  "底部留白保证最后一个场景也能滚动到与目录顶部持平的位置": "Bottom padding ensures the last scenario can also scroll up to the TOC top position",
+  "侧边目录 + 内容": "Side TOC + content",
+  "总览": "Overview",
+  "场景板块": "Scenario section",
+  "元信息": "Meta info",
+  "数据底表文件卡片": "Source data file card",
+  "产出物 · 本地文件就地预览": "Deliverables - local file inline preview",
+  "产出物": "Deliverables",
+  "行业调研模块": "Industry research module",
+  "==== 以下内容示例样式取自《WorkBuddy 经营洞察实战手册》，已限定作用域 ====": "==== Sample styles below are taken from the WorkBuddy Business Insights Playbook and scoped to their own selectors ====",
+  "===== 编辑模式 =====": "===== Edit mode =====",
+  "复制改动兜底弹层": "Fallback dialog for copying changes",
+  "编辑时放开卡片说明的行数截断，保证能改到完整文字": "While editing, lift the line clamp on card descriptions so the full text can be edited"
+}
