@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junshu Xin — Business Analytics · Retail &amp; AI Solutions</title>
+<meta name="description" content="Junshu Xin — business analytics portfolio: retail BI cockpits, metric design, ETL pipelines, and client-facing AI solution delivery.">
+<style>
+  :root {
+    --navy: #1e3a5f;
+    --navy-soft: #2c5282;
+    --ink: #1f2937;
+    --gray: #6b7280;
+    --line: #e2e8f0;
+    --bg: #ffffff;
+    --bg-soft: #f7f9fc;
+    --accent: #c8a35a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial,
+                 "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- hero ---------- */
+  header.hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: #fff;
+    padding: 62px 0 52px;
+  }
+  .hero h1 { font-size: 40px; font-weight: 700; letter-spacing: -.5px; line-height: 1.15; }
+  .hero .tagline { margin-top: 10px; font-size: 17px; color: #c3d3e8; font-weight: 500; }
+  .hero .about { margin-top: 22px; max-width: 660px; font-size: 15px; color: #dbe6f2; }
+  .hero-links { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .hero-links a {
+    display: inline-block; padding: 7px 16px; border-radius: 4px;
+    font-size: 13.5px; text-decoration: none; font-weight: 500;
+    background: rgba(255,255,255,.13); color: #fff; border: 1px solid rgba(255,255,255,.28);
+    transition: background .15s ease;
+  }
+  .hero-links a:hover { background: rgba(255,255,255,.24); }
+
+  /* ---------- sections ---------- */
+  section { padding: 46px 0 8px; }
+  h2 {
+    font-size: 13px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase;
+    color: var(--navy); padding-bottom: 9px; border-bottom: 2px solid var(--navy); margin-bottom: 22px;
+  }
+
+  /* ---------- project cards ---------- */
+  .project {
+    border: 1px solid var(--line); border-radius: 7px; padding: 24px 26px;
+    margin-bottom: 20px; background: var(--bg);
+    transition: box-shadow .18s ease, border-color .18s ease;
+  }
+  .project:hover { box-shadow: 0 4px 20px rgba(30,58,95,.10); border-color: #cbd7e6; }
+  .project-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .project h3 { font-size: 19px; font-weight: 700; color: var(--navy); }
+  .project .when { font-size: 13px; color: var(--gray); white-space: nowrap; }
+  .project .org { margin-top: 3px; font-size: 13.5px; color: var(--navy-soft); font-weight: 600; }
+  .project p.desc { margin-top: 13px; font-size: 14.5px; color: #374151; }
+  .project ul { margin-top: 12px; padding-left: 18px; }
+  .project li { font-size: 14.5px; margin-bottom: 6px; color: #374151; }
+  .project li b { color: var(--navy); font-weight: 700; }
+  .note {
+    margin-top: 14px; padding: 10px 14px; background: #fdf8ec; border-left: 3px solid var(--accent);
+    font-size: 13px; color: #6b5a2f; border-radius: 0 4px 4px 0;
+  }
+  .tags { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag {
+    font-size: 12px; padding: 3px 10px; border-radius: 20px;
+    background: var(--bg-soft); color: var(--navy-soft); border: 1px solid var(--line); font-weight: 500;
+  }
+
+  /* ---------- metric table ---------- */
+  table.metrics { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 14px; }
+  table.metrics th, table.metrics td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+  table.metrics th { color: var(--navy); font-weight: 700; font-size: 12.5px; letter-spacing: .6px; text-transform: uppercase; }
+  table.metrics td:first-child { font-weight: 600; color: #374151; width: 30%; }
+  table.metrics tr:last-child td { border-bottom: none; }
+
+  /* ---------- drill diagram ---------- */
+  .diagram { margin-top: 18px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 6px; padding: 14px; }
+
+  /* ---------- skills ---------- */
+  .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .skill-box { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; }
+  .skill-box h4 { font-size: 12px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--navy); margin-bottom: 7px; }
+  .skill-box p { font-size: 14px; color: #374151; }
+
+  /* ---------- footer ---------- */
+  footer { margin-top: 46px; padding: 30px 0 44px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--gray); }
+  footer a { color: var(--navy-soft); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 30px; }
+    .wrap { padding: 0 18px; }
+    .project { padding: 18px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Junshu Xin</h1>
+    <div class="tagline">Business Analytics &amp; Data Analytics · Retail &amp; AI Solutions</div>
+    <p class="about">
+      I build the measurement layer behind retail decisions — from ETL pipelines and metric definitions
+      to executive-facing dashboards and client-facing AI solution demos. Currently completing my
+      MS in Business Analytics (STEM) at USC Marshall. Bilingual English–Mandarin, 8 years in the U.S.
+    </p>
+    <div class="hero-links">
+      <a href="mailto:junshuxi@usc.edu">junshuxi@usc.edu</a>
+      <a href="https://github.com/BillyXinjs">GitHub</a>
+      <a href="#projects">Projects</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section id="projects">
+    <h2>Selected Projects</h2>
+
+    <!-- 1 -->
+    <div class="project">
+      <div class="project-head">
+        <h3>Retail Business Intelligence Cockpit</h3>
+        <span class="when">2026</span>
+      </div>
+      <div class="org">Multi-dimensional BI · client-facing analytics delivery</div>
+      <p class="desc">
+        A single-file BI cockpit with <b>5–6 drill-down levels</b>, built on star-schema dimensional models.
+        The core design decision: metric definitions are set <b>per industry</b> rather than reused from a
+        generic template — a jewelry retailer and an apparel retailer do not run on the same numbers.
+      </p>
+      <table class="metrics">
+        <tr><th>Industry</th><th>Metrics that actually matter</th></tr>
+        <tr><td>Fine jewelry</td><td>Gold price exposure · sales per square meter · gross margin by store</td></tr>
+        <tr><td>Apparel &amp; footwear</td><td>Fabric cost ratio · inventory turnover · sell-through by SKU</td></tr>
+        <tr><td>General retail</td><td>Repurchase rate · member contribution · channel mix</td></tr>
+      </table>
+      <div class="diagram">
+        <svg viewBox="0 0 860 132" width="100%" height="132" role="img" aria-label="Drill-down structure">
+          <defs>
+            <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+              <path d="M0,0 L7,3 L0,6 z" fill="#2c5282"/>
+            </marker>
+          </defs>
+          <g font-family="Inter, Helvetica, Arial, sans-serif" font-size="12">
+            <rect x="8" y="46" width="150" height="42" rx="5" fill="#1e3a5f"/>
+            <text x="83" y="65" fill="#fff" text-anchor="middle" font-weight="600">L1 Group</text>
+            <text x="83" y="80" fill="#c3d3e8" text-anchor="middle" font-size="10.5">Company · P&amp;L</text>
+
+            <line x1="158" y1="67" x2="186" y2="67" stroke="#2c5282" stroke-width="1.6" marker-end="url(#ar)"/>
+            <rect x="188" y="46" width="150" height="42" rx="5" fill="#2c5282"/>
+            <text x="263" y="65" fill="#fff" text-anchor="middle" font-weight="600">L2 Region</text>
+            <text x="263" y="80" fill="#c3d3e8" text-anchor="middle" font-size="10.5">28 cities · 30 stores</text>
+
+            <line x1="338" y1="67" x2="366" y2="67" stroke="#2c5282" stroke-width="1.6" marker-end="url(#ar)"/>
+            <rect x="368" y="46" width="150" height="42" rx="5" fill="#3d6ba8"/>
+            <text x="443" y="65" fill="#fff" text-anchor="middle" font-weight="600">L3 Store</text>
+            <text x="443" y="80" fill="#c3d3e8" text-anchor="middle" font-size="10.5">Per-store productivity</text>
+
+            <line x1="518" y1="67" x2="546" y2="67" stroke="#2c5282" stroke-width="1.6" marker-end="url(#ar)"/>
+            <rect x="548" y="46" width="150" height="42" rx="5" fill="#5b87bf"/>
+            <text x="623" y="65" fill="#fff" text-anchor="middle" font-weight="600">L4 Category</text>
+            <text x="623" y="80" fill="#dbe6f2" text-anchor="middle" font-size="10.5">Margin · turnover</text>
+
+            <line x1="698" y1="67" x2="726" y2="67" stroke="#2c5282" stroke-width="1.6" marker-end="url(#ar)"/>
+            <rect x="728" y="46" width="124" height="42" rx="5" fill="#7fa3d1"/>
+            <text x="790" y="65" fill="#fff" text-anchor="middle" font-weight="600">L5–6 SKU</text>
+            <text x="790" y="80" fill="#dbe6f2" text-anchor="middle" font-size="10.5">Transaction detail</text>
+
+            <text x="8" y="114" fill="#6b7280" font-size="11.5">
+              External market feeds (gold / cotton / packaging) are parameterized, so the cockpit refreshes without a rebuild.
+            </text>
+          </g>
+        </svg>
+      </div>
+      <ul>
+        <li>Competitor tracking and sentiment monitoring fed by <b>automated social &amp; e-commerce collection</b> (browser automation + scheduled jobs).</li>
+        <li><b>Dual delivery</b>: an HTML cockpit for reading, plus the raw Excel behind it — every number is auditable rather than taken on trust.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Star-schema modeling</span>
+        <span class="tag">Metric / KPI design</span><span class="tag">HTML + JS</span><span class="tag">Browser automation</span>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="project">
+      <div class="project-head">
+        <h3>Industry Scenario Playbook — 21 Scenarios × 9 Functional Tracks</h3>
+        <span class="when">2026</span>
+      </div>
+      <div class="org">AI enablement · knowledge asset design</div>
+      <p class="desc">
+        Most AI rollouts stall because every team re-invents the prompt. I turned
+        <b>21 delivered scenarios</b> into a structured playbook across <b>9 functional tracks</b>,
+        each reproducing the full “prompt → deliverable” chain so a colleague can pick it up and run it.
+      </p>
+      <ul>
+        <li><b>9 tracks</b>: market insight · social listening · brand marketing · business analytics · supply chain · offline retail · HR · finance · office productivity.</li>
+        <li><b>16 online deliverables</b> attached, so each scenario ends in an artifact rather than a description.</li>
+        <li><b>Adopted team-wide</b> — scenario production moved from “write a prompt from scratch” to “copy from the playbook”, roughly <b>80% less build time</b>.</li>
+      </ul>
+      <div class="note">
+        Note: the original playbook and its deliverables were built on a former employer's internal platform
+        and are not publicly shareable. What is described here is the structure and method, not the source material.
+      </div>
+      <div class="tags">
+        <span class="tag">Prompt design</span><span class="tag">Knowledge management</span>
+        <span class="tag">Enablement</span><span class="tag">Retail domain</span>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="project">
+      <div class="project-head">
+        <h3>Supplier Quality Data Platform</h3>
+        <span class="when">2025</span>
+      </div>
+      <div class="org">Automotive · supply algorithm data engineering</div>
+      <p class="desc">
+        Built the ingestion and quality layer that supplier quality decisions ran on: automated collection,
+        validated against explicit rules, then surfaced as dashboards engineers would actually open.
+      </p>
+      <ul>
+        <li><b>5 automated ETL pipelines</b> in Python and SQL, collecting <b>100M+</b> supplier test metrics.</li>
+        <li><b>72 data-quality validation rules</b>, synced to a cloud data platform — bad data is caught before it reaches a dashboard.</li>
+        <li><b>5 Tableau dashboards</b> and <b>20+ KPI</b> reports covering yield and final pass rate.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">ETL</span>
+        <span class="tag">Data quality</span><span class="tag">Tableau</span><span class="tag">Cloud data platform</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="project">
+      <div class="project-head">
+        <h3>Recipe Rating Prediction</h3>
+        <span class="when">2024</span>
+      </div>
+      <div class="org">UC San Diego · DSC 80 final project</div>
+      <p class="desc">
+        Investigated whether recipe complexity drives user ratings — a question that looks obvious until you test it.
+      </p>
+      <ul>
+        <li>Identified behavioral drivers through <b>hypothesis testing and causal inference</b>, then engineered features.</li>
+        <li>Benchmarked logistic regression vs. random forest: <b>0.91 accuracy</b>, <b>0.85 F1</b>.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Causal inference</span>
+        <span class="tag">Feature engineering</span><span class="tag">Classification</span>
+      </div>
+      <p style="margin-top:14px;font-size:14px;">
+        <a href="https://github.com/JunshuXin/Number-of-Step-and-Ratings-in-Recipe" style="color:var(--navy-soft);font-weight:600;">View code and write-up on GitHub →</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-box">
+        <h4>Data &amp; Engineering</h4>
+        <p>Python, SQL, Spark SQL, R, Stata · ETL pipelines · Tableau, Power BI, Excel · cloud data platforms</p>
+      </div>
+      <div class="skill-box">
+        <h4>Analytics</h4>
+        <p>Dimensional modeling, drill-down dashboards, KPI &amp; metric design, data governance, root-cause analysis, regression &amp; causal inference, machine learning</p>
+      </div>
+      <div class="skill-box">
+        <h4>AI &amp; Automation</h4>
+        <p>Structured prompt design, reusable analysis skills (prompt + config-driven), browser automation with scheduled collection</p>
+      </div>
+      <div class="skill-box">
+        <h4>Client &amp; Solutions</h4>
+        <p>Requirements discovery &amp; scoping, solution design, Demo / POC delivery, executive workshop facilitation, enablement training</p>
+      </div>
+      <div class="skill-box">
+        <h4>Industry</h4>
+        <p>Retail (fine jewelry, cashmere apparel, kidswear, womenswear), automotive, e-commerce &amp; social commerce, venture capital</p>
+      </div>
+      <div class="skill-box">
+        <h4>Language</h4>
+        <p>English and Mandarin — bilingual, 8 years in the U.S.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Junshu Xin · Los Angeles, CA · <a href="mailto:junshuxi@usc.edu">junshuxi@usc.edu</a></div>
+    <div style="margin-top:6px;">MS Business Analytics (STEM), USC Marshall · BS Data Science &amp; Business Economics, UC San Diego</div>
+  </footer>
+
+</div>
+</body>
+</html>
