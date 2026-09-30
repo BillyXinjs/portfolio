@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retail AI Scenario Playbook — 21 Scenarios · 9 Functional Tracks</title>
+<meta name="description" content="A structured playbook of 21 delivered retail AI scenarios across 9 functional tracks, each reproducing the prompt-to-deliverable chain.">
+<style>
+  :root {
+    --navy:#1e3a5f; --navy-soft:#2c5282; --ink:#1f2937; --gray:#6b7280;
+    --line:#e2e8f0; --soft:#f7f9fc; --accent:#c8a35a;
+  }
+  *{{margin:0;padding:0;box-sizing:border-box}}
+  body{{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,
+        "PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}}
+  .wrap{{max-width:960px;margin:0 auto;padding:0 28px}}
+  header.hero{{background:linear-gradient(135deg,#1e3a5f 0%,#2c5282 100%);color:#fff;padding:54px 0 44px}}
+  .hero h1{{font-size:34px;font-weight:700;letter-spacing:-.4px;line-height:1.2}}
+  .hero .sub{{margin-top:9px;font-size:16px;color:#c3d3e8}}
+  .hero p{{margin-top:18px;max-width:680px;font-size:14.5px;color:#dbe6f2}}
+  .hero .stats{{margin-top:22px;display:flex;gap:26px;flex-wrap:wrap}}
+  .hero .stat b{{display:block;font-size:26px;font-weight:700;line-height:1.1}}
+  .hero .stat span{{font-size:12px;color:#a9c0dc;letter-spacing:.6px;text-transform:uppercase}}
+  .back{{display:inline-block;margin-top:20px;font-size:13.5px;color:#c3d3e8;text-decoration:none;border-bottom:1px solid rgba(195,211,232,.4)}}
+  .back:hover{{color:#fff}}
+
+  .disclaimer{{margin:26px 0 0;padding:12px 16px;background:#fdf8ec;border-left:3px solid var(--accent);
+               font-size:13px;color:#6b5a2f;border-radius:0 4px 4px 0}}
+
+  section.track{{padding:34px 0 0}}
+  .track-head{{display:flex;align-items:baseline;gap:10px;padding-bottom:8px;border-bottom:2px solid var(--navy);margin-bottom:16px}}
+  .track-head .ic{{color:var(--navy);font-size:15px}}
+  .track-head h2{{font-size:15px;font-weight:700;color:var(--navy);letter-spacing:1.4px;text-transform:uppercase}}
+  .track-head .n{{margin-left:auto;font-size:12.5px;color:var(--gray)}}
+
+  .scene{{border:1px solid var(--line);border-radius:6px;margin-bottom:12px;overflow:hidden;background:#fff}}
+  .scene-h{{padding:14px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}}
+  .scene-h h3{{font-size:16px;font-weight:700;color:var(--navy)}}
+  .scene-h .o{{font-size:12px;color:var(--gray);white-space:nowrap}}
+  .scene .d{{padding:0 18px 12px;font-size:14px;color:#374151}}
+  details{{border-top:1px solid var(--line)}}
+  details summary{{padding:10px 18px;font-size:13px;font-weight:600;color:var(--navy-soft);cursor:pointer;user-select:none}}
+  details summary:hover{{background:var(--soft)}}
+  details pre{{margin:0;padding:0 18px 16px;font-size:12.5px;line-height:1.62;color:#334155;
+               white-space:pre-wrap;font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft)}}
+
+  footer{{margin-top:44px;padding:28px 0 44px;border-top:1px solid var(--line);font-size:13.5px;color:var(--gray)}}
+  footer a{{color:var(--navy-soft);text-decoration:none}}
+  @media(max-width:640px){.wrap{padding:0 18px}.hero h1{font-size:26px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Retail AI Scenario Playbook</h1>
+    <div class="sub">21 delivered scenarios · 9 functional tracks · prompt → deliverable, end to end</div>
+    <p>
+      Most AI rollouts stall because every team re-invents the prompt from scratch. This playbook turns 21
+      scenarios that were actually delivered into something a colleague can pick up and run: each one records
+      the prompt, the output shape, and the reasoning behind the metric definitions.
+    </p>
+    <div class="stats">
+      <div class="stat"><b>21</b><span>Scenarios</span></div>
+      <div class="stat"><b>9</b><span>Functional tracks</span></div>
+      <div class="stat"><b>~80%</b><span>Less build time</span></div>
+    </div>
+    <a class="back" href="index.html">← Back to portfolio</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="disclaimer">
+    <b>On sourcing:</b> this is a rebuilt reference edition. Store names are generic (Store A, B, C…),
+    competitor names are anonymised (Brand A–G), credentials are stripped to placeholders, and all figures are
+    illustrative sample data used to demonstrate output structure — exactly as labelled in the original.
+    The underlying playbook was built on a former employer's internal platform and is not publicly shareable;
+    what is presented here is the structure and method.
+  </div>
+
+  <section class="track">
+  <div class="track-head"><span class="ic">◎</span><h2>Market Insight</h2><span class="n">3 scenarios</span></div>
+  <div class="scene">
+  <div class="scene-h"><h3>Fashion Trend Daily</h3><span class="o">HTML brief · auto-pushed weekly</span></div>
+  <div class="d">Scrapes runway coverage and distills trends along three axes — silhouette, colour, fabric — then pushes a brief on a schedule.</div>
+  <details><summary>Show prompt</summary><pre>Fetch the last 7 days of runway coverage from the Big Four fashion weeks (Milan / Paris / New York / London), focused on Spring/Summer 2026 womenswear, and build a trend brief:
+1. Top 5 silhouettes (with visual reference: A-line / tailoring / deconstructed / oversize / utility)
+2. Top 5 colours (with Pantone codes + estimated peak month)
+3. Top 3 fabrics (with finishing keywords, e.g. pleating, bonded seams, brushed)
+4. Which major houses have already picked up these signals — and where same-price-tier competitors overlap
+Output: single-file HTML report with a colour-bar visual and silhouette diagrams.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Industry Landscape Research</h3><span class="o">HTML report · A3 infographic · 30-slide deck</span></div>
+  <div class="d">Four dimensions — market size, consumer profile, channel structure, risk — delivered as a report + infographic + deck.</div>
+  <details><summary>Show prompt</summary><pre>Produce a deep research report on the premium womenswear market:
+- Market size / growth / concentration (CR5 / CR10)
+- Consumer profile (age / income / city tier / purchase frequency)
+- Strategic moves by leading brands over the past 12 months
+- Channel structure shift (offline / e-commerce / private domain / content platforms)
+- Risk points (downgrading spend, inventory turnover, overseas brands returning)
+Output:
+- Single-file HTML report (table of contents + charts)
+- A one-page A3 executive infographic
+- A 30-slide investor deck
+Tone: restrained and professional. No filler adjectives — every claim needs a number behind it.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Listed-Company Earnings Comparison</h3><span class="o">Comparison HTML · ROI heatmap · quarterly tracker</span></div>
+  <div class="d">Cross-company comparison on revenue, margin, inventory turnover and expense ratio, with an ROI heatmap, refreshed each reporting season.</div>
+  <details><summary>Show prompt</summary><pre>Run a cross-sectional read on the latest results of 7 listed womenswear companies (Brand A through Brand G):
+Comparison dimensions:
+- Revenue YoY / net margin / inventory turnover / receivables
+- Channel mix shift: direct-retail / franchise / e-commerce
+- One industry heatmap scoring ROI / growth / inventory health
+- A quarterly tracking sheet (.xlsx) kept as a long-lived asset
+Schedule:
+- Auto-fetch and notify each reporting season (Apr / Aug / Oct / late Jan)
+- Push to my inbox and the strategy team wiki</pre></details>
+</div>
+</section>
+<section class="track">
+  <div class="track-head"><span class="ic">◈</span><h2>Social Listening (VOC)</h2><span class="n">4 scenarios</span></div>
+  <div class="scene">
+  <div class="scene-h"><h3>Xiaohongshu / RED Consumer Insight</h3><span class="o">Action list · word cloud</span></div>
+  <div class="d">Pulls the top posts of the last 30 days and surfaces hot terms, recurring products and unmet needs — then chains insights into a trend line.</div>
+  <details><summary>Show prompt</summary><pre>Collect the top 200 notes from the last 30 days on premium womenswear styling and report:
+- The 5 product types appearing most often
+- Pain points consumers raise unprompted (e.g. "looks bulky", "loses shape", "shrinks after washing")
+- Three product improvement recommendations for us
+Output: an action list plus a word-cloud visual.
+Tip: add "compare against last month" so each month's insight forms a trend line automatically.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Sentiment Analysis</h3><span class="o">Sentiment breakdown · issue clusters · fix list</span></div>
+  <div class="d">Batches scattered reviews into sentiment distribution, issue clusters and an owner-assigned fix list.</div>
+  <details><summary>Show prompt</summary><pre>Read review batches across platforms and output:
+- Sentiment distribution (positive / neutral / negative) with an overall health verdict
+- Issue clusters, ranked by frequency
+- A remediation list with a suggested owner per item, ready to hand off</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Hit-Product Teardown</h3><span class="o">Cross-reference table · differentiation summary</span></div>
+  <div class="d">Searches competitor price, fabric and selling points, then produces a cross-reference table and our points of differentiation.</div>
+  <details><summary>Show prompt</summary><pre>Find comparable in-season styles from three same-tier competitors (similar silhouette / fabric / price) and build a cross-reference table:
+- Price, fabric composition, cut, and high-frequency words in user reviews
+- Our top 3 differentiation advantages
+- Top 3 design elements worth adopting
+Tip: swap in the parameters of the styles we actually have in stock — the output gets much sharper.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Competitor &amp; Reputation Comparison</h3><span class="o">Comparison matrix · P0–P2 risk register · response plan</span></div>
+  <div class="d">Two search passes — a reputation baseline, then competitor and controversy angles — producing a scored matrix, risk register and response plan.</div>
+  <details><summary>Show prompt</summary><pre>Two objectives:
+Competitive read — where our brand stands against competitors in word of mouth and what users actually compare.
+Reputation monitoring — true sentiment health, positive/negative distribution, and negative risk points, with warnings and a response plan.
+
+Search strategy (two passes)
+Pass 1: search the brand (including name variants), sort by hottest, exclude official accounts, pure ad copy and image-only posts; keep the top 5 notes with genuine discussion (reputation baseline).
+Pass 2 (two directions, 2–3 notes each):
+  competitive angle — "brand vs brand", "is competitor X worth buying";
+  controversy angle — "complaints", "quality", "sizing", "colour mismatch", "pilling/shrinkage", "after-sales".
+Merge with pass 1 and settle on the 10 most information-dense notes.
+
+Extraction rules
+For each note, pull comments with 5+ likes, prioritising questions, brand comparisons and negative disputes. Tag every comment with:
+- category (brand comparison / quality doubt / price-value / fit / colour mismatch / after-sales / recommendation / link request)
+- sentiment (positive / neutral / negative)
+- competitor names mentioned
+
+Analysis output
+- Sentiment volume and distribution, plus an overall health verdict
+- Competitive matrix scored across reputation, quality, price, design, fit, expertise, after-sales — one-line strength, one-line weakness
+- Top 5 user pain points by frequency
+- Top 5 positive and top 5 negative keywords, listed separately
+- Negative risk register graded P0/P1/P2 by severity and reach, with note links and like counts
+- Trend judgement and response plan: PR holding line, service-script fixes, QC improvements, competitive plays, monitoring priorities</pre></details>
+</div>
+</section>
+<section class="track">
+  <div class="track-head"><span class="ic">◆</span><h2>Brand Marketing</h2><span class="n">6 scenarios</span></div>
+  <div class="scene">
+  <div class="scene-h"><h3>Product Poster Generation</h3><span class="o">Channel-ready image set</span></div>
+  <div class="d">One model shot becomes a full set of channel-ready images. Traditional shoot-plus-design took 1–2 weeks; this runs in minutes.</div>
+  <details><summary>Show prompt</summary><pre>From a single model reference image, generate the channel image set (main image, detail crops, and platform-specific ratios).
+Keep garment geometry and colour faithful to the reference. No watermark, no invented logos.
+Output: one image per channel spec, named by channel.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Product Copy</h3><span class="o">Mobile detail page HTML · copy deck</span></div>
+  <div class="d">Structured parameters plus a product image produce a mobile detail-page demo and copy, cutting launch copy time sharply.</div>
+  <details><summary>Show prompt</summary><pre>[Product]
+- Brand / product name / price / strikethrough price
+- Target customer (e.g. urban professional women 30+)
+- Price tier (mid / premium / luxury)
+- Fabric composition (write "per care label" if unknown)
+- Size chart (height/weight range for S/M/L)
+[Visual]
+- Primary colour / tone (e.g. understated luxury / minimal / youthful)
+[Structure — 9 modules top to bottom]
+1 brand bar · 2 hero image with season badge · 3 price block with hook line and 3–4 selling-point tags · 4 four numbered selling points with plain-language explanations · 5 fabric and construction detail · 6 size table with a fit note · 7 three styling scenarios · 8 care and after-sales · 9 CTA buttons
+[Copy rules]
+- One-line headline, one-line hook. No adjective stacking.
+- Lead each selling point with a short phrase, then explain it in plain words.
+- Never invent missing facts — default to neutral phrasing such as "per care label".
+[Technical]
+- 375px mobile container, centred on a light grey backdrop. Leave unfilled fields as visible placeholders.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Product Detail Page</h3><span class="o">Conversion-path detail page</span></div>
+  <div class="d">Turns product images and selling points into a selling-point → usage-scenario → construction chain, so the page has a conversion path.</div>
+  <details><summary>Show prompt</summary><pre>Arrange the product assets into a conversion path: core selling point → usage scenario → construction detail.
+Each section must answer a real objection a buyer raises at that point in the scroll.
+Output: a single-file mobile page, plus the raw asset list so the numbers stay auditable.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Campaign Playbook</h3><span class="o">Phase-by-phase config sheet · risk register</span></div>
+  <div class="d">Splits a promotion into pre-sale, launch, peak and clearance phases, generating discount tiers and stock allocation with risk flags.</div>
+  <details><summary>Show prompt</summary><pre>Walk the campaign through pre-sale → launch (opening day) → peak (main day) → clearance. For each phase give the time window, core objective, main mechanic and GMV share.
+
+Then generate the mechanic configuration per phase:
+- Tiered spend thresholds (4 tiers)
+- Member pricing (member discount, points multiplier, stack rules)
+- Stock locking (pre-sale allocation, safety水位, oversell threshold)
+
+Stock and settlement checks — 6 stock-side items (lock, oversell, cross-channel, size breaks, release, deposit allocation) and 6 settlement-side items (stacking rules, member-price exclusivity, return allocation, commission, tax, price protection).
+
+High-risk configuration points — red / amber / green grading. Each red flag (stacked discounts producing negative margin, locked stock not released, pre-sale stock unallocated, price protection) must carry a concrete avoidance action.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Live-Stream Post-Mortem</h3><span class="o">Review report · segment table · script library</span></div>
+  <div class="d">Reads the transcript alongside viewership data to find peak and dead-air segments, then outputs a review and a reusable script library.</div>
+  <details><summary>Show prompt</summary><pre>Read the live-stream transcript together with concurrent-viewer data.
+- Identify high-engagement segments and dead-air segments, with timestamps
+- Explain what drove each peak and what caused each drop
+- Build a reusable script library from the highest-converting lines
+- Grade recommendations: P0 (direct GMV impact) / P1 (acquisition and retention) / P2 (data feedback)
+Output: review report, segment table, script library.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Live-Commerce Competitive Report</h3><span class="o">HTML report · Excel workbook · pitch summary</span></div>
+  <div class="d">Pulls competitor sell-through and placement data by category through a third-party data API, producing a report usable in pre-sales demos.</div>
+  <details><summary>Show prompt</summary><pre>Pipeline: data acquisition → processing → report output → asset retention.
+
+[Sources]
+1. Primary: query a configured third-party live-commerce data API (key: &lt;YOUR_API_KEY&gt;) for real-time platform data.
+2. Local: read cached brand JSON files under /workspace/demo/data/.
+3. Hard rule: cross-validate both sources and annotate any definitional gap. Mark missing data explicitly as "to confirm" — never fill by assumption.
+
+[Scope]
+Our brand plus two competitors · channel: the short-video commerce platform (live + short video + product cards) · 30-day window primary, 90-day as trend support.
+
+[Dimensions]
+1 Category structure — sub-category split, share by value and by units (dual view so price differences don't mislead), SKU count and newness cadence
+2 Price bands — distribution across four bands; average, median, main band, high/low; discount rate and basket size; who competes on volume vs price vs positioning
+3 Hit products — top 10 by 30-day value and units cross-ranked; hit profile; new hits vs evergreen; whether hits sit in the main price band
+4 Competitor profile — audience age and spending power, store matrix, content cadence and creator scale, one-line positioning each
+
+[Processing requirements]
+Multi-source integration into one master table · unit and window alignment · dedupe, outlier detection, missing-value flagging · brand × price band × category cross-tab · computed metrics (share, period growth, average price, hit concentration) · charts (comparison bars, band distribution, hit ranking, brand radar).
+
+[Output]
+1. One single-file HTML report (cover, summary, contents, four dimensions, comparison charts, conclusions)
+2. One Excel workbook with the raw detail by brand (multiple sheets)
+3. A conclusion-first verbal summary ready for a pre-sales pitch
+
+[Quality bar]
+Demo data must be traceable. Anything unconfirmed is flagged "to confirm". Conclusion first, tables clear, material differences highlighted. Explain non-obvious financial or data terms in plain language.</pre></details>
+</div>
+</section>
+<section class="track">
+  <div class="track-head"><span class="ic">▣</span><h2>Business Analytics</h2><span class="n">2 scenarios</span></div>
+  <div class="scene">
+  <div class="scene-h"><h3>Multi-Source Table Merge</h3><span class="o">Health-check report · master-data dictionary · wide table</span></div>
+  <div class="d">Definitions rarely match across systems, so it runs a data health check and lists every discrepancy before building one wide table — alignment drops from days to a single conversation.</div>
+  <details><summary>Show prompt</summary><pre>These tables come from different systems.
+First, run a data health check: examine [store name], [date], [category] and [currency unit] across all tables for inconsistent definitions. For each, list the inconsistent field, how each table writes it, and the blast radius. Do not merge yet — give me the health report first.
+
+Then build a store master-data dictionary using these rules:
+1. Store names use the official full name (e.g. "Deji" → "Nanjing Deji"; "Marina Bay" → "Singapore Marina Bay")
+2. Dates normalised to YYYY-MM-DD
+3. The store field is uniformly named [store_name]
+Output a store code mapping table (official name / aliases per table / city).
+
+Finally, merge the 5 tables into one store-level operating wide table, one row per store:
+store / city / monthly sales / units / online GMV / offline GMV / referral redemptions / members / average gross margin. Online and offline fields must map to the same store. All amounts in yuan.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Weekly Operating Report</h3><span class="o">Bi-weekly HTML report with charts</span></div>
+  <div class="d">Many tables, mixed definitions — so it states metric definitions and reconciliation logic first, then generates the bi-weekly operating report.</div>
+  <details><summary>Show prompt</summary><pre>Step 1 — Give me a structural overview only, in clear text. Do not change any data; I'll tell you what to adjust.
+
+Step 2 — Generate a bi-weekly operating report as an HTML file:
+1. Overview: core metrics (UV, orders, conversion rate, basket size, UV value) and the period definition
+2. Week comparison: split the two weeks and compute period-over-period; also use the table's own "vs same period last week" field as a second view
+3. Module analysis: homepage traffic, page/floor efficiency, channel structure, campaign effect, associate operations — one or two key conclusions each
+4. Charts per section (trend line, share pie, comparison bars), each paired with a "data conclusion" and an "action recommendation"
+5. Close with "bi-weekly summary + next week's focus"
+Visual: clean business style, restrained accent colour.</pre></details>
+</div>
+</section>
+<section class="track">
+  <div class="track-head"><span class="ic">▤</span><h2>Supply Chain</h2><span class="n">1 scenario</span></div>
+  <div class="scene">
+  <div class="scene-h"><h3>Supplier Screening &amp; Evaluation</h3><span class="o">Comparison matrix · tiering · inquiry template</span></div>
+  <div class="d">Verifies pricing, MOQ and quality/legal risk across 3–5 suppliers, then tiers them into recommended, backup and blacklist.</div>
+  <details><summary>Show prompt</summary><pre>Screen and run a first pricing round against these criteria:
+1. Find 3–5 candidate suppliers (verify entity scale via a company registry)
+2. Price comparison (quote / MOQ / payment terms / tax included or not)
+3. Quality risk assessment (industry reputation / last 12 months of sentiment / legal disputes)
+4. Return a recommended tier, a backup tier and a blacklist
+Output: supplier comparison matrix, reasoning, and a ready-to-send inquiry email template.</pre></details>
+</div>
+</section>
+<section class="track">
+  <div class="track-head"><span class="ic">▦</span><h2>Offline Retail</h2><span class="n">2 scenarios</span></div>
+  <div class="scene">
+  <div class="scene-h"><h3>Inventory Health Alert</h3><span class="o">HTML report with six chart families</span></div>
+  <div class="d">Auto-detects fields, runs ABC classification and days-of-cover, and flags both slow-moving and stock-out risk.</div>
+  <details><summary>Show prompt</summary><pre>ABC classification — inventory value share = stock × unit price; A = top 70%, B = 70–90%, C = final 10%.
+Days of cover — current stock ÷ average daily sales, prefer the last 90 days.
+Slow-mover alert — cover above 120 days is flagged slow; stock below safety stock is flagged high stock-out risk.
+Multi-dimension rollups — by category, supplier, store and season.
+Charts — ABC pie, category distribution, cover histogram, risk scatter, supplier comparison, store health.
+
+Input Excel must contain: SKU code, category, item name, current stock, safety stock, unit cost, retail price, sales in the last 30 (or 90) days, supplier, store.
+
+Output: a complete HTML analysis report — overview, category structure, cover health, stock-out risk, supplier performance, store comparison — written in plain language for business owners.</pre></details>
+</div>
+  <div class="scene">
+  <div class="scene-h"><h3>Store Associate Enablement</h3><span class="o">Selling-point cards · styling map · display guide · scripts</span></div>
+  <div class="d">One new-season assortment becomes selling-point cards, a styling map, display guidance and live scripts — packaged and sent to stores ready to use.</div>
+  <details><summary>Show prompt</summary><pre>We have 142 new styles this season. Build training material for franchise store managers:
+1. Quick-reference selling-point cards (one per style: image + 3 points + 1 objection handler)
+2. A styling map (which pieces pair, which form a complete look)
+3. Display guidance (window / feature table / fitting-room zone)
+4. Live scripts (5 minutes per style × 30 styles)
+Output: an online course link plus a packaged download.</pre></details>
+</div>
+</section>
+<section class="track">
+  <div class="track-head"><span class="ic">▧</span><h2>HR</h2><span class="n">1 scenario</span></div>
+  <div class="scene">
+  <div class="scene-h"><h3>Headcount Management Dashboard</h3><span class="o">Interactive dashboard (single file)</span></div>
+  <div class="d">Presents the headcount dashboard and an HRBP workspace with matching downloadable sample data — opens and runs without deployment.</div>
+  <details><summary>Show prompt</summary><pre>Build a headcount management dashboard plus an HRBP workspace view.
+Data definitions must line up exactly with the charts and stay traceable.
+Include two-level navigation, case lightboxes and interactive charts. Clean business visual. Must open directly with no deployment — suitable as ready-made material for HR digitalisation demos.</pre></details>
+</div>
+</section>
+<section class="track">
+  <div class="track-head"><span class="ic">▨</span><h2>Finance</h2><span class="n">1 scenario</span></div>
+  <div class="scene">
+  <div class="scene-h"><h3>Finance全景 Cockpit</h3><span class="o">Drill-down cockpit + raw Excel</span></div>
+  <div class="d">Covers data preparation through reporting output, presenting the full finance scenario map — a starting point for finance scenario expansion.</div>
+  <details><summary>Show prompt</summary><pre>Assemble the finance view end to end: data preparation, metric definition, drill-down cockpit and reporting output.
+Metric definitions are set per business line rather than copied from a template.
+Deliver both an interactive cockpit and the raw Excel behind it, so every figure is auditable.</pre></details>
+</div>
+</section>
+<section class="track">
+  <div class="track-head"><span class="ic">▩</span><h2>Office Productivity</h2><span class="n">1 scenario</span></div>
+  <div class="scene">
+  <div class="scene-h"><h3>Deck Generation (HTML → editable PPTX)</h3><span class="o">Editable .pptx</span></div>
+  <div class="d">One topic sentence or one source document produces an editable .pptx — including HTML-to-corporate-deck conversion that can be revised further.</div>
+  <details><summary>Show prompt</summary><pre>Output a real .pptx file — not an image, not a web page.
+
+Core value: automate the entire deck-building chain — read the material, fix the visual language, decide what to say, design how it looks, build it page by page, then check and deliver.
+
+Conversion mode: turn HTML pages/slides into an editable corporate-style PPTX. Text fidelity 100% (conversion changes layout, not wording); visual fidelity 85–90% (shapes re-drawn). Built-in design tokens, 8 component specs, 10 reference page scripts; native charts, tables and KPI cards generated in code; self-check and repair pass included.</pre></details>
+</div>
+</section>
+
+  <footer>
+    Junshu Xin · <a href="mailto:junshuxi@usc.edu">junshuxi@usc.edu</a> ·
+    <a href="index.html">Portfolio</a> · <a href="https://github.com/BillyXinjs">GitHub</a>
+  </footer>
+</div>
+</body>
+</html>
